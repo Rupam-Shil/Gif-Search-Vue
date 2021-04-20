@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<div><Search @gifs="addGifs" /> <GifList :gifs="gifs" /></div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Search from './components/Search';
+import GifList from './components/GifList';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	name: 'App',
+	data() {
+		return {
+			gifs: [],
+		};
+	},
+	components: { Search, GifList },
+	methods: {
+		addGifs(com) {
+			this.gifs = com;
+		},
+	},
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+	box-sizing: border-box;
+}
+body {
+	background: rgb(255, 223, 225);
+	padding-top: 150px;
+	background: radial-gradient(
+		circle,
+		rgba(255, 223, 225, 1) 43%,
+		rgba(255, 117, 117, 1) 95%
+	);
 }
 </style>
